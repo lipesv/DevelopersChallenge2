@@ -1,0 +1,47 @@
+@using OFX.Application.Dto.Transaction
+
+@model IEnumerable<StatementTransactionDto>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div class="panel panel-default panel-controls">
+
+    <div class="panel panel-heading">
+        <h3>Statement Transactions</h3>
+    </div>
+
+    <div class="panel panel-body">
+        <p>
+            <a asp-controller="Transaction" asp-action="Import" class="btn btn-primary">Import Transactions</a>
+        </p>
+
+
+        <table class="table table-light table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                    <th>@Html.DisplayNameFor(model => model.Posted)</th>
+                    <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                    <th>@Html.DisplayNameFor(model => model.Memo)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in ((IEnumerable<StatementTransactionDto>)ViewData["transactions"]))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Posted)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Memo)</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
